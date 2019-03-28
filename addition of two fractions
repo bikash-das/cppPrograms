@@ -8,9 +8,6 @@ class fraction{
 		long long b;
 };
 
-class gcdlcm
-{ 
- public :
  long long gcd(long long a,long long b){
 	if(a<b){
 		int temp = a;
@@ -28,12 +25,11 @@ class gcdlcm
   long long lcm(long long a, long long b){  
     return (a*b)/gcd(a, b);  
   }  
-}; 
+
 
 fraction addfraction(fraction num1, fraction num2){
-	gcdlcm obj;
 	fraction result;
-	long long l = obj.lcm(num1.b,num2.b);
+	long long l = lcm(num1.b,num2.b);
 	result.a = ((l/num1.b) * num1.a) + ((l/num2.b) * num2.a);
 	result.b = l;
 	return result;
@@ -54,5 +50,8 @@ int main(){
 	fraction num1, num2,res;
 	inputfraction(num1,num2);		
 	res = addfraction(num1,num2);
+	long long normalize = gcd(res.a,res.b);
+	res.a = res.a/normalize;
+	res.b = res.b/normalize;
 	displayfraction(num1,num2,res);
 }
