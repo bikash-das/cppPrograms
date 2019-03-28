@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class fraction{
+	public:
+		long long a;
+		long long b;
+};
+
+class gcdlcm
+{ 
+ public :
+ long long gcd(long long a,long long b){
+	if(a<b){
+		int temp = a;
+		a = b;
+		b = temp;
+	}
+	long long rem = a % b;
+	while(rem!=0){
+		a=b;
+		b=rem;
+		rem = a % b;
+	}
+	return b;
+  }
+  long long lcm(long long a, long long b){  
+    return (a*b)/gcd(a, b);  
+  }  
+}; 
+
+fraction addfraction(fraction num1, fraction num2){
+	gcdlcm obj;
+	fraction result;
+	long long l = obj.lcm(num1.b,num2.b);
+	result.a = ((l/num1.b) * num1.a) + ((l/num2.b) * num2.a);
+	result.b = l;
+	return result;
+}
+void inputfraction(fraction& num1, fraction& num2){
+	cout<<"Enter first fractions: ";
+	cin>>num1.a>>num1.b;
+	cout<<"Enter second fractions: ";
+	cin>>num2.a>>num2.b;
+}
+void displayfraction(fraction& num1, fraction& num2, fraction& res){
+	cout<<num1.a<<"/"<<num1.b<<" + ";
+	cout<<num2.a<<"/"<<num2.b<<" = ";
+	cout<<res.a<<"/"<<res.b<<"\n";
+}
+
+int main(){
+	fraction num1, num2,res;
+	inputfraction(num1,num2);		
+	res = addfraction(num1,num2);
+	displayfraction(num1,num2,res);
+}
