@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <math.h>
 typedef long long ll;
+typedef unsigned long long ull;
 using namespace std;
 void header(vector<ll>& maxlengthArray, ll& m){
     for(ll i = 0; i < m; i++){
@@ -15,99 +16,113 @@ void header(vector<ll>& maxlengthArray, ll& m){
     }
     cout<<"+\n";
 }
+/* for left alignment and right alignment based on type of data */
+void left_align(ll w, string value){
+    cout.setf(ios::left);
+    cout.width(w);
+    cout<<value;
+    cout.unsetf(ios::left);
+}
+void right_align(ll w, string value){
+    cout.setf(ios::right);
+    cout.width(w);
+    cout<<value;
+    cout.unsetf(ios::right);
+}
+/* *********************************************************** */
 
 int main()
 {
-    ll t;
-    cin>>t;
-    while(t--){
-        ll m, n;
-        //cout<<"Enter no of attribute and values\n";
-        cin>>m>>n;
-        n=n+1;
-        vector <string> s(m*n);
-        for(ll i = 0; i<m*n; i++){
-            cin>>s[i];
-        }
-        vector <ll> maxlengthArray(m);
-        for(ll i = 0; i < m*n; i++){
-            if(maxlengthArray[i%m] < s[i].length()){
-                maxlengthArray[i%m] = s[i].length();
+    try {
+        ll t;
+        cin>>t;
+        while(t--){
+            ll m, n;
+            //cout<<"Enter no of attribute and values\n";
+            cin>>m>>n;
+            n=n+1;
+            vector <string> s(m*n);
+            for(ll i = 0; i<m*n; i++){
+                cin>>s[i];
             }
-        }
+            vector <ll> maxlengthArray(m);
+            for(ll i = 0; i < m*n; i++){
+                if(maxlengthArray[i%m] < s[i].length()){
+                    maxlengthArray[i%m] = s[i].length();
+                }
+            }
 
-        // decide type of values
-        vector <char> types(m);
-        ll j = 0;
-        for(ll i = m; i < 2*m; i++){
-            //cout<<s[i]<<" ";
-            if(s[i][2] == '/'){
-               // cout<<"date ";
-                types[j++]='d';
+            // decide type of values
+            vector <char> types(m);
+            ll j = 0;
+            for(ll i = m; i < 2*m; i++){
+                //cout<<s[i]<<" ";
+                if(s[i][2] == '/'){
+                   // cout<<"date ";
+                    types[j++]='d';
+                }
+//                else if(isdigit(s[i][2])){
+//                    types[j++] = 'n';
+//                    //cout<<" number ";
+//                }
+                else if(s[i] == "false" || s[i] == "true"){
+                    types[j++] = 'b';
+                  //  cout<<" boolean";
+                }else if(isalpha(s[i][0])){ /* if not boolean then if first letter is character then it's string */
+                    types[j++] = 's';
+                   // cout<<" strings";
+                }
+                else{
+                    types[j++] = 'n';
+                }
             }
-            else if(isdigit(s[i][2])){
-                types[j++] = 'n';
-                //cout<<" number ";
-            }
-            else if(s[i] == "false"){
-                types[j++] = 'b';
-              //  cout<<" boolean";
-            }else{
-                types[j++] = 's';
-               // cout<<" strings";
-            }
-        }
-        /* ************************************************************************************************/
+            /* ************************************************************************************************/
 
-        //header
-        header(maxlengthArray,m);
+            //header
+            header(maxlengthArray,m);
 
-        for(ll i = 0; i<m; i++){
-            if(types[i] == 's' || types[i] == 'd' || types[i] == 'b'){
-                cout<<"| ";
-                cout.setf(ios::left);
-                cout.width(maxlengthArray[i]+1);
-                cout<<s[i];
-                cout.unsetf(ios::left);
-             } else{
-                cout<<"|";
-                cout.width((maxlengthArray[i]+1));
-                cout<<s[i];
-                cout.unsetf(ios::right);
-                cout<<" |";
-           }
-        }
-        cout<<endl;
-        header(maxlengthArray,m); //header() call
-        ll v = 0;
-        for(ll i = m; i < s.size(); i++){
-            if(types[v] == 's' || types[v] == 'd' || types[v] == 'b'){
-                cout<<"| ";
-                cout.setf(ios::left);
-                cout.width(maxlengthArray[v]+1);
-                cout<<s[i];
-                cout.unsetf(ios::left);
-             } else{
-                cout<<"|";
-                cout.width((maxlengthArray[v]+1));
-                cout<<s[i];
-                cout.unsetf(ios::right);
-                cout<<" |";
+            for(ull i = 0; i<m; i++){
+                if(types[i] == 's' || types[i] == 'd' || types[i] == 'b'){
+                    cout<<"|";
+                      left_align(maxlengthArray[i],s[i]);
+                 } else{
+                    cout<<"|";
+                    right_align(maxlengthArray[i],s[i]);
+               }
+                if(i == m-1){
+                     cout<<"|";
+                     cout<<endl;
+                }
             }
-            v++;
-            if(v == m){
-                v = 0;
-                cout<<endl;
+            header(maxlengthArray,m); //header() call
+            ll v = 0;
+            for(ll i = m; i < s.size(); i++){
+                if(types[v] == 's' || types[v] == 'd' || types[v] == 'b'){
+                    cout<<"|";
+                    left_align(maxlengthArray[v],s[i]);
+                 } else{
+                    cout<<"|";
+                     right_align(maxlengthArray[v],s[i]);
+                }
+                v++;
+                if(v == m){
+                    v = 0;
+                    cout<<"|";
+                    cout<<endl;
+                }
             }
-        }
-        for(ll i = 0; i < m; i++){
-            cout<<"+";
-            for(unsigned j = 1; j<=maxlengthArray[i]; j++){
-                cout<<"-";
+            for(ll i = 0; i < m; i++){
+                cout<<"+";
+                for(ll j = 1; j<=maxlengthArray[i]; j++){
+                    cout<<"-";
+                }
+                cout<<"--"; //for spaces
             }
-            cout<<"--"; //for spaces
-        }
-        cout<<"+\n";
+            cout<<"+\n";
 
+        }
+    } catch (...) {
+        cout<<"Error\n";
     }
+
 }
