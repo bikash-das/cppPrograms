@@ -33,7 +33,6 @@ void right_align(ll w, string value){
 
 int main()
 {
-    try {
         ll t;
         cin>>t;
         while(t--){
@@ -82,28 +81,29 @@ int main()
             header(maxlengthArray,m);
 
             for(ull i = 0; i<m; i++){
+                cout<<"| ";
                 if(types[i] == 's' || types[i] == 'd' || types[i] == 'b'){
-                    cout<<"|";
                       left_align(maxlengthArray[i],s[i]);
+
                  } else{
-                    cout<<"|";
                     right_align(maxlengthArray[i],s[i]);
                }
+               cout<<" ";
                 if(i == m-1){
-                     cout<<"|";
+                    cout<<"|";
                      cout<<endl;
                 }
             }
             header(maxlengthArray,m); //header() call
             ll v = 0;
             for(ll i = m; i < s.size(); i++){
+                cout<<"| ";
                 if(types[v] == 's' || types[v] == 'd' || types[v] == 'b'){
-                    cout<<"|";
-                    left_align(maxlengthArray[v],s[i]);
+                   left_align(maxlengthArray[v],s[i]);
                  } else{
-                    cout<<"|";
                      right_align(maxlengthArray[v],s[i]);
                 }
+                cout<<" ";
                 v++;
                 if(v == m){
                     v = 0;
@@ -121,8 +121,6 @@ int main()
             cout<<"+\n";
 
         }
-    } catch (...) {
-        cout<<"Error\n";
-    }
+
 
 }
