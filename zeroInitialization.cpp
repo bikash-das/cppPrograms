@@ -2,8 +2,8 @@
 #include <cmath>
 #include <string>
 #include <vector>
-// #include <execution> //for parallel algorithms
-#include <algorithm>
+#include <execution> //for parallel algorithms
+
 using bigint = long int; //works in 11, 14, 17 same as typedef
 int main(){
   int counter {}; //thisiszero initialization, by default counter now has 0 in it
@@ -39,6 +39,6 @@ int main(){
   std::wcout << cyc << std::endl;
 
   std::vector<std::string> v{"bikash", "barsha", "ankita", "mritunjay"};
-  std::sort(std::execution::par, v.begin(), v.end());
+  // std::sort(std::execution::par, v.begin(), v.end());
 
 }
