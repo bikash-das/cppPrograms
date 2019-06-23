@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 int main(){
   const size_t max {100};
@@ -9,7 +10,8 @@ int main(){
   while(count < max){
     bool isprime {true};
     // std::cout << (count && isprime) << " ";
-    for(size_t i {}; i < count && isprime; ++i){        //loop will run till count, provided isprime is true,
+    const auto limit = static_cast<long> (std::sqrt(trial));
+    for(size_t i {}; i < limit && isprime; ++i){        //loop will run till count, provided isprime is true,
         isprime = trial % *(primes + i) > 0;  //logic is divide by only those no which are prime
     }
     if(isprime){
