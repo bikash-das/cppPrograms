@@ -58,9 +58,13 @@ int main(){  //code bloat issue,
   myVec<int> vec1;
   vec1.push(10); vec1.push(20); vec1.push(30); vec1.push(40); vec1.push(50);
   myVec<int> vec2;
-  vec2.push(10); vec2.push(20); vec2.push(30); vec2.push(40); vec2.push(50);
+  vec2.push(10); vec2.push(20); vec2.push(30); vec2.push(40); vec2.push(50); vec2.push(60);
 
   myVec<int> result;
-  result = vec1 * vec2;
-  result.print();
+  if(vec1.getSize() == vec2.getSize()) {
+    result = vec1 * vec2;
+    result.print();
+  }else{
+    std::cout << "Can't do element wise multiplication!\nResaon: Size of two input vectors differ\n";
+  }
 }
