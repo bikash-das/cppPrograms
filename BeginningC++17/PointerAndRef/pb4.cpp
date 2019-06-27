@@ -7,18 +7,20 @@ notice anything interesting about the result?
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <memory>
 
 int main(){
   int size {};
   std::cout << "Enter size?\n";
   std::cin >> size;
   float sum {0.0};
-  auto *arr {new std::vector<float>{}};
-  auto *p = arr;
+  auto arr {std::make_unique<float[]> (size) }; // float *data = new float[size];
+
+  // auto *p = arr;
   for(int i = 0; i < size; i++){
     // (*p).push_back(1.0 / pow(i+1,2));
     float temp = 1.0 / pow(i+1,2);
-    p->push_back(temp);
+    arr[i] = temp;
     sum += temp;
   }
   std::cout << sqrt(sum*6) << std::endl;
