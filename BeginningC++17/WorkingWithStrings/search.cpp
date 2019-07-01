@@ -10,18 +10,20 @@ int main(){
   word = "he";
   int count {};
   for(size_t i{}; i < sentence.length() - word.length();){
+    // find scans whole sentence, if found returns the index
+    // else return std::string::npos
     size_t position = sentence.find(word, i); //find word start with index i and return the index of the first occurence if found
-    std::cout << "Position :: " << position << std::endl;
+    std::cout << "Found at Position :: " << position << std::endl;
     if(position == std::string::npos){
       std::cout << "Not found from index " << i << std::endl;
-      std::cout << "Length: " << sentence.length() - word.length() << std::endl;
       std::cout << "break from here\n";
       break;   //not found break
     }
     ++count;
     i = position + 1; //found at index positon, now start finding from position + 1
   }
-  std::cout << count << std::endl;
+  std::cout << "\"" << word << "\"" << " occurs in " << "\"" << sentence
+            << "\" " << count << " times" << std::endl;
 }
 
 /*
