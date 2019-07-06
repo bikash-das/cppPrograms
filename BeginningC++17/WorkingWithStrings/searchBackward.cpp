@@ -8,6 +8,6 @@ int main(){
   std::cout << sentence.rfind(word) << std::endl;
   if(sentence.rfind(std::string {"bik"}) == std::string::npos){
     std::cout << "Non_existent" << std::endl;
-  }
+  } 
   std::cout << sentence.substr(sentence.rfind(word), sentence.length()-sentence.rfind(word)) << std::endl;
 }
