@@ -25,7 +25,7 @@ int main(){
   size_t start {text.find(word)};  // get the index of the word
   while(start != std::string::npos){
     text.replace(start, word.length(), replacement);  // give start index, length of word to replace, and replacement word
-    start = text.find(word, start+replacement.length()); // find again, start from replacement.length()
+    start = text.find(word, start+replacement.length()); // find word, start from start+replacement.length()
   }
   std::cout << text << std::endl;
 
