@@ -37,22 +37,20 @@ void print(std::vector<std::string>& names, std::vector<int>& grades){
 }
 int main(){
   std::vector<std::string> names {};
-  std::vector<int> grades {10,30,50,80};
+  std::vector<int> grades {};
   char confirmation;
   std::string input;
   int grade;
-  names.push_back("Bikash");names.push_back("Ankitha");names.push_back("Swadhin"); names.push_back("MRitunjaSuor");
-
-  // do{
-  //   std::cout << "Enter first name: ";
-  //   std::cin >> input;
-  //   names.push_back(input);
-  //   std::cout << "Enter grades: ";
-  //   std::cin >> grade;
-  //   grades.push_back(grade);
-  //   std::cout << "Do you want to add another (y or n): ";
-  //   std::cin >> confirmation;
-  // }while(std::tolower(confirmation) == 'y');
+  do{
+    std::cout << "Enter first name: ";
+    std::cin >> input;
+    names.push_back(input);
+    std::cout << "Enter grades: ";
+    std::cin >> grade;
+    grades.push_back(grade);
+    std::cout << "Do you want to add another (y or n): ";
+    std::cin >> confirmation;
+  }while(std::tolower(confirmation) == 'y');
 
   double avg = std::accumulate(grades.begin(), grades.end(), 0.0) / grades.size();
   std::cout << "Average Grade: " << avg << std::endl;
