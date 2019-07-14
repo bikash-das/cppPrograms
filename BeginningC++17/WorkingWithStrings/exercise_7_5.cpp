@@ -9,23 +9,25 @@
 #include <string>
 #include <map>
 
-void modify_string(std::string& s){
+std::string modify_string(std::string& s){
+  std::string res {};
   for(int i = 0; i < s.length(); i++){
-    if(s[i] == ' '){
-      s.erase(i,1);
+    if(s[i] != ' '){
+      res.push_back(s[i]);
     }
   }
+  return res;
 }
 int main(){
   std::string word_1 {};
   std::cout << "Enter first word: ";
   std::getline(std::cin, word_1);
-  modify_string(word_1);
-  
+  word_1 = modify_string(word_1);
+
   std::string word_2 {};
   std::cout << "Enter second word: ";
   std::getline(std::cin, word_2);
-  modify_string(word_2);
+  word_2 = modify_string(word_2);
 
   if(word_1.length() == word_2.length()){
       std::map<char, int> word_1_map{};
