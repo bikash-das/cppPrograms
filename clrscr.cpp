@@ -3,7 +3,8 @@
 #include <cstdlib>
 
 void clearscreen(){
-  system("clear");
+  // detect which os you are running
+  system("clear"); //works for linux ,
 }
 
 int main(){
