@@ -1,21 +1,21 @@
 /* creating my own power function */
 #include <iostream>
 
-double power(double x, int n){
+double power(double base, int exponent){
   double result {1};
-  if(n >= 0){
-    for(int i {1};i <= n; ++i){
-      result *= x;
+  if(exponent >= 0){
+    for(int i {1};i <= exponent; ++i){
+      result *= base;
     }
   }
   else{
-    for(int i {1}; i <= -n; ++i)
-      result /= x * 1.0;
+    for(int i {1}; i <= -exponent; ++i)
+      result /= base * 1.0;
   }
   return result;
 }
 
 int main(){
-  int x {2}, n {-10};
-  std::cout << power(x, n) << std::endl;
+  double base {2.0}, exponent {-10};
+  std::cout << power(base, exponent) << std::endl;
 }
