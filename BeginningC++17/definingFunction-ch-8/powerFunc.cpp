@@ -2,7 +2,7 @@
 #include <iostream>
 
 double power(double base, int exponent){
-  double result {1};
+  double result {1.0};
   if(exponent >= 0){
     for(int i {1};i <= exponent; ++i){
       result *= base;
@@ -10,7 +10,7 @@ double power(double base, int exponent){
   }
   else{
     for(int i {1}; i <= -exponent; ++i)
-      result /= base * 1.0;
+      result /= base;
   }
   return result;
 }
