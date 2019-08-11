@@ -1,0 +1,27 @@
+Explanation: ln = line number
+
+ln  1: include standard input/output header
+ln  2: inlucde ctype header to use tolower() to convert a character into lowercase
+ln  3: include standard lib for exit() function -> case 3
+ln  5: we declare two variables c and confirmation.
+       c            = to enter a character to check for vowel or Consonant
+       confirmation = to ask user to enter y for yes or n for no, to run the program again
+ln  6: we declare two integer variable choice and number.
+       choice = users choice used in switch function
+       number = to store number that we will check for even or Odd
+ln  7: line number 7 to 11 we simply print the menu and ask user's choice
+ln 13: based on user choice value switch statement is executed
+ln 14: line number 14 to line 21
+       we ask user to enter a number and check whether it's even or odd.
+       even number is when a number is divided by 2 and yields a remainder 0.
+ln 22: don't forget the break statement.
+ln 23: line number 23 to 33
+       We ask user to enter a character, we convert the character to lower case
+       and check if it's a vowel or consonant.
+ln 34: line number 34 to 35
+       if user enter choice as 3 then we exit
+ln 37: line number 37 and 39 that is for default statement.
+ln 41: line number 41 and 42
+       we ask user if they want to run the program again.
+       the confirmation value is converted to lowercase and check if it's equal to 'y'
+       it means yes, run the loop or else it terminates.
