@@ -24,7 +24,6 @@ int main(){
     int n;
     cin >> n;
     assert(n>0);
-
     cout << "Enter " << n << " elements\n";
     int input;
     for(int i = 0; i < n; i++){
