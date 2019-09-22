@@ -24,34 +24,22 @@ class Solution {
                     int temp = s;
                     vector<int> vec = generate_differences(i-1,n);
                     for(int j = 0; j<n;j++){
-                        if(i==1){
-                            if(vec[j] == 0){
-                                cout << temp << " ";
-                                val = temp;
-                            }
-                            else if(vec[j] == 1){
+                        if(vec[j] == 0){
+                            cout << temp << " ";
+                            val = temp;
+                        }
+                        else if(vec[j] == 1){
+                            if(i==1){
                                 cout << ++temp << " ";
-                                val = temp;
                             }else{
-                                val += vec[j];
-                                cout << val << " ";
-                            }
-
-                        }else{
-                            if(vec[j] == 0){
-                                cout << temp << " ";
-                                val = temp;
-                            }
-                            else if(vec[j] == 1){
                                 cout << --temp << " ";
-                                val = temp;
-                            }else{
-                                val += vec[j];
-                                cout << val << " ";
                             }
-                        }                       
-
-                    }
+                            val = temp;
+                        }else{
+                            val += vec[j];
+                            cout << val << " ";
+                        }
+                    }                 
                     s = s+((i+1)*2-1);
                     cout << "\n";
                 }
