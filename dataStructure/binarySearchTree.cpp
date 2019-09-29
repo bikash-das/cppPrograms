@@ -21,6 +21,7 @@ class bst{
            }
            return isBST(root->left,root->data,min) && isBST(root->right,max,root->data);
        }
+   
     public:
     node* root;
     bst(){
@@ -48,6 +49,15 @@ class bst{
                 insert(root->right, value);
             }
         }
+    }
+     bool isSameTree(node* root1, node* root2){
+        if(root1==nullptr && root2==nullptr){
+            return true;
+        }
+        if(root1 == nullptr || root2 == nullptr){
+            return false;
+        }
+        return root1->data == root2->data && isSameTree(root1->left,root2->left) && isSameTree(root1->right,root2->right);
     }
     bool contains(node* root, int value){
         if(root == nullptr)
@@ -80,6 +90,7 @@ class bst{
     bool isBST(node* root){
         return isBST(root, numeric_limits<int>::max(),numeric_limits<int>::min());
     }
+
 };
 int main(){
     bst* mybst = new bst();
@@ -98,4 +109,12 @@ int main(){
     cout << boolalpha <<  mybst->contains(mybst->root, 20) << endl;
 
     cout <<(mybst->isBST(mybst->root) ? "Binary search tree" : "Not a bst") << "\n";
+
+    bst* bst2 = new bst();
+    bst2->insert(bst2->root,10);
+    bst2->insert(bst2->root,20);
+    bst2->insert(bst2->root,5);
+    bst2->insert(bst2->root,70);
+    bst2->insert(bst2->root,19);
+    cout << endl <<  boolalpha << (bst2->isSameTree(bst2->root,mybst->root) ? "same tree " : "different tree") << "\n";
 }
