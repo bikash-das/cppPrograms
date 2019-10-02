@@ -21,7 +21,6 @@ int main(){
             if(char_set.find(v) != char_set.end())
                 continue;
             
-            // add only if no is not in char_set
             sum += v - '0';
         }
         cout << sum << "\n";
@@ -30,6 +29,8 @@ int main(){
         cout << "Invalid Input\n";
     }catch(out_of_range& e){
         cout << "long integer range exceeded\n";
+    }catch(...){
+        cout << "Error in code\n";
     }
     
 }
