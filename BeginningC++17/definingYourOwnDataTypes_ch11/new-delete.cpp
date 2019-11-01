@@ -26,13 +26,13 @@ public:
 	}
 int main(){
 	cout << "allocating space for one A object" << endl;
-	A *a = new (nothrow) A; // if unable don't throw exception
+	A *a = new (nothrow) A[5]; // if unable don't throw exception
 	if(a == nullptr){
 		cerr << "new A failed." << endl;
 		return 1;
 	}
 	printf("a: %d, %d, %d\n", a->a(), a->b(), a->c());
-	delete a;
+	delete[] a;
 	cout << "space for A object deleted" << endl;
 	return 0;
 }
