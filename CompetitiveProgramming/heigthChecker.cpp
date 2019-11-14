@@ -16,7 +16,8 @@
 int height_checker(std::vector<int>& v){
   auto copy_v = v;    /* make duplicate */
   sort(copy_v.begin(), copy_v.end());  /* sort the duplicate */
-  return std::inner_product(v.begin(), v.end(), copy_v.begin(), 0, std::plus<>(), std::not_equal_to<>()); /* count for elements not equal to, returns boolean then add using plus<>() */
+  return std::inner_product(v.begin(), v.end(), copy_v.begin(), 0, std::plus<>(), std::not_equal_to<>()); 
+  /* count for elements not equal to, returns boolean then add using plus<>() */
 }
 int main(){
   int n;
@@ -29,5 +30,4 @@ int main(){
     v.emplace_back(val);
   }
   std::cout << height_checker(v) << std::endl;
-
 }
