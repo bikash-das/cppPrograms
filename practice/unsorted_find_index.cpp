@@ -7,6 +7,7 @@ int main(){
     cout << "Enter number of elemenets: ";
     cin >> n;
     int input;
+    cout << "Enter " << n << " elements\n";
     for(int i = 0; i < n; i++){
         cin >> input;
         m.insert(make_pair(input,i));
