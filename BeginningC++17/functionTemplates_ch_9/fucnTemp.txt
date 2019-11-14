@@ -1,0 +1,72 @@
+Function Templates:
+    When code is same for a function only thing that differs is the type,
+    then make use of function Templates.
+Template Arg deduction:
+    When the compiler deduces the type automatically.
+
+eg: template<typename T> T min(T a, T b);
+
+cout << "min of 1 and 2 is " << min(1,2) << "\n"; 
+
+Use it like a normal function.
+
+The compiler will generate only one template instance of a function and reuse it. In case different
+types is provided, then new instance is created.
+
+
+Template Type Parameters:
+    in the above min() we accept Parameters by value.
+To make it accept by reference, we rewrite as
+    template <typename T> 
+    const T& min(const T& a, const T& b){
+        return a < b ? a : b;
+    }
+
+Explicit Template Arguments:
+    Compilation fails when we pass two different types of parameter to the smaller template function
+    why? Because the function template accepts same type of data.
+    How to resolve?
+      Tyepcast, or change the function to accept two different parameter.
+      or, we can explicityly call the function as
+        smaller<double>(var1, 20.5);     now irrespective of type of var1, compiler will attempt to convert it into double 
+
+Function Template Specialization:
+    When we use pointer type as arg to function template, the function becomes
+      int* smaller(int*, int *);
+    and the function ends up returning the smaller address and not the value.
+     (Be careful when  using pointer types as template arguments)
+So this kind of error needs to be addressed.
+ To address we seperately create a different function:
+   It should come first than the declaration of the original template.
+
+   template<>
+   int* min<int*>(int* a, int* b){
+       return *a > *b ? a : b;
+   }
+   As you can see we've hardcoded for int*
+
+Function Template and Overloading
+    Instead of creating a Specialization template, we could overload the template function.
+    int* min(int* a, int* b){
+        return *a < *b ? a : b;
+    }
+    template<typename T>
+    T min(T a, T b){
+        return a < b? a : b;
+    }
+ Overloading: 
+    let suppose we have a vector and we want to find the min element in the vector 
+    we could overload the min function as follows
+      
+      template<typename T>
+      T min(const vector<T>& values){
+          if(values.size() < 1)
+            return;
+          T res { values.at(0) };
+          for(auto& v : values)
+            if(v < res)
+                res = v;
+        return res;
+      }
+
+

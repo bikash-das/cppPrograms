@@ -10,11 +10,11 @@ int main(){
 
     double moreDouble[] {1.0, 2.0, 3.0, 4,0};
     std::cout << average(moreDouble) << "\n";
-    
+
     //for this the compiler doesn't create a templte instance, it reuses from 2
     std::cout << average( {1.0, 2.0, 3.0, 4.0}) << "\n";
 
-    int ints[] = {1,2,3,4}; 
+    int ints[] = {1,2,3,4};  // result is deduced as int
     std::cout << average(ints) << "\n";
 }
 

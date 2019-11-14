@@ -15,6 +15,7 @@ template<>
 decltype(auto) plus<int*>(int* a, int* b){
     return *a + *b;
 }
+
 using std::string;
 using std::cout;
 int main(){
@@ -24,4 +25,5 @@ int main(){
     cout << plus(f_name,s_name) << "\n";
     int a = 20,b=30;
     cout << plus(&a,&b) << "\n";
+   
 }
