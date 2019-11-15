@@ -1,7 +1,5 @@
-/*
-  Get list of numbers in 2 arrays. Find the identical integers from that 2 array
-  and sort the final list in ascending order.
-*/
+/*  Get list of numbers in 2 arrays. Find the identical integers from that 2
+    array and sort the final list in ascending order.*/
 #include <iostream>
 #include <vector>
 #include <iterator>
@@ -22,7 +20,7 @@ int main(){
   std::sort(myArray_2.begin(), myArray_2.end());
   auto iter2 = std::unique(myArray_2.begin(), myArray_2.end());
   myArray_2.erase(iter2, myArray_2.end());
-  
+
   /* print the identical numbers */
   std::cout << "Final Output: \n";
   int f = 0;
